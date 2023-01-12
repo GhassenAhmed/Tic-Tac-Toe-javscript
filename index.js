@@ -11,7 +11,7 @@ const winCombos=[
     [0,4,8],
     [2,4,6]
 ]
-
+let usedCells=[];
 
 let player1={
     Symbol:'<i class="fa fa-close"></i>',
@@ -43,6 +43,7 @@ for(let i=0;i<9;i++){
 function addSymbole(player,i){
     cells[i].innerHTML=player.Symbol;
     player.played.push(i);
+    usedCells.push(i);
 }
 
 
@@ -54,7 +55,13 @@ function checkWin(player){
     })
 }
 
-
+function isEmpty(i){
+    if(usedCells.includes(i)){
+        return false
+    }else{
+        return true;
+    }
+}
 
 
 
