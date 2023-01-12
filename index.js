@@ -1,6 +1,6 @@
 const cells = document.querySelectorAll('.cell');
 let turn=true;
-let reset=document.querySelector('.turn');
+let btnreset=document.querySelector('.button');
 const winCombos=[
     [0,1,2],
     [3,4,5],
@@ -27,16 +27,20 @@ let player2={
 
 for(let i=0;i<9;i++){
     cells[i].addEventListener('click',()=>{
-        if(turn){
-            addSymbole(player1,i);
-            checkWin(player1);
-            turn=false;
+        if(isEmpty(i)){
+            if(turn){
+                addSymbole(player1,i);
+                checkWin(player1);
+                turn=false;
+            }else{
+                addSymbole(player2,i);
+                checkWin(player2);
+                turn=true;
+            }    
         }else{
-            addSymbole(player2,i);
-            checkWin(player2);
-            turn=true;
+            alert("choose another cell");
         }
-        
+       
     })
 }
 
@@ -72,10 +76,11 @@ function isEmpty(i){
 
 
 
-// function reset(){
-    
-//         for(let i=0;i<9;i++){
-//             cells[i].innerHTML='';
-//         }
+function reset(){
+    cells.forEach(cell=>{
+        cell.innerHTML='';
+    })
+    usedCells=[];
+}
 
-// }
+btnreset.addEventListener('click',reset);
