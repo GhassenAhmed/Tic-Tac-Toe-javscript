@@ -88,6 +88,7 @@ label{
     justify-content: center;
     align-items: center;
     z-index: 1;
+    display: none;
 }
 
 .message{
@@ -105,5 +106,20 @@ label{
     border-top: #19375b 1px solid;
     border-bottom: 1px solid #19375b;
     box-shadow: 0 10px 20px #000;
-    
+
+}
+
+.close{
+     position: absolute;
+     right: 30px;
+     top: 20px;
+     cursor: pointer;
+     padding: 10px;
+}
+.content #msg{
+    font-size: 56px;
+}
+.content h2{
+    font-size: 70px;
+    color: #febf14;
 }
