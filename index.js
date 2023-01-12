@@ -41,13 +41,13 @@ for(let i=0;i<9;i++){
         if(isEmpty(i)){
             if(turn){
                 addSymbole(player1,i);
-                checkWin(player1);
                 turn=false;
+                checkWin(player1);
                 checkTurn();
             }else{
                 addSymbole(player2,i);
-                checkWin(player2);
                 turn=true;
+                checkWin(player2);
                 checkTurn();
             }    
         }else{
@@ -68,7 +68,6 @@ function checkWin(player){
     if(!winner){
         winCombos.some(combo=>{
             if(combo.every(index => player.played.includes(index))){
-                alert("u won");
                 player.score++;
                 showScore();
                 showMessage(player);
