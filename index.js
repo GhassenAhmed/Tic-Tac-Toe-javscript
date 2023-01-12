@@ -9,7 +9,7 @@ const winCombos=[
     [1,4,7],
     [2,5,8],
     [0,4,8],
-    [2,4,6],
+    [2,4,6]
 ]
 
 
@@ -29,9 +29,11 @@ for(let i=0;i<9;i++){
     cells[i].addEventListener('click',()=>{
         if(turn){
             addSymbole(player1,i);
+            checkWin(player1);
             turn=false;
         }else{
             addSymbole(player2,i);
+            checkWin(player2);
             turn=true;
         }
         
@@ -40,11 +42,16 @@ for(let i=0;i<9;i++){
 
 function addSymbole(player,i){
     cells[i].innerHTML=player.Symbol;
+    player.played.push(i);
 }
 
 
-function checkWin(){
-
+function checkWin(player){
+    winCombos.some(combo=>{
+        if(combo.every(index => player.played.includes(index))){
+            alert("u won");
+        }
+    })
 }
 
 
