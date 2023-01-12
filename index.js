@@ -1,6 +1,6 @@
 const cells = document.querySelectorAll('.cell');
 let turn=true;
-
+let reset=document.querySelector('.turn');
 
 
 
@@ -31,4 +31,12 @@ for(let i=0;i<9;i++){
 
 function addSymbole(player,i){
     cells[i].innerHTML=player.Symbol;
+}
+
+function reset(){
+    
+        for(let i=0;i<9;i++){
+            cells[i].innerHTML='';
+        }
+
 }
