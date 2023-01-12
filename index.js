@@ -11,6 +11,9 @@ const winCombos=[
     [0,4,8],
     [2,4,6]
 ]
+const currentTurn=document.querySelector('.current-turn');
+const player1score=document.querySelector('.score1');
+const player2score=document.querySelector('.score2');
 let usedCells=[];
 
 let player1={
@@ -25,6 +28,7 @@ let player2={
     score:0
 }
 
+checkTurn();
 for(let i=0;i<9;i++){
     cells[i].addEventListener('click',()=>{
         if(isEmpty(i)){
@@ -32,10 +36,12 @@ for(let i=0;i<9;i++){
                 addSymbole(player1,i);
                 checkWin(player1);
                 turn=false;
+                checkTurn();
             }else{
                 addSymbole(player2,i);
                 checkWin(player2);
                 turn=true;
+                checkTurn();
             }    
         }else{
             alert("choose another cell");
@@ -55,26 +61,19 @@ function checkWin(player){
     winCombos.some(combo=>{
         if(combo.every(index => player.played.includes(index))){
             alert("u won");
+            player.score++;
+            showScore();
         }
     })
 }
 
 function isEmpty(i){
     if(usedCells.includes(i)){
-        return false
+        return false;
     }else{
         return true;
     }
 }
-
-
-
-
-
-
-
-
-
 
 function reset(){
     cells.forEach(cell=>{
@@ -83,6 +82,20 @@ function reset(){
     usedCells=[];
     player1.played=[];
     player2.played=[];
+    turn=true;
 }
 
 btnreset.addEventListener('click',reset);
+
+function checkTurn(){
+    if(turn){
+        currentTurn.innerHTML=player1.Symbol;
+    }else{
+        currentTurn.innerHTML=player2.Symbol;
+    }
+}
+
+function showScore(){
+    player1score.innerHTML=player1.score;
+    player2score.innerHTML=player2.score;
+}
