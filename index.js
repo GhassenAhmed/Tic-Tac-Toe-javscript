@@ -77,6 +77,7 @@ function checkWin(player){
     if(!winner && usedCells.length==9){
         ties++;
         showScore();
+        showMessage(player);
     }
 }
 
@@ -114,10 +115,12 @@ function showScore(){
     draw.innerHTML=ties;
 }
 
-function showMessage(player){
-    if(!winner){
-        overlay.style.display='flex';
+function showMessage(player,winner){
+    overlay.style.display='flex';
+    if(winner){
         content.innerHTML= player.Symbol +msg;
+    }else{
+        content.innerHTML= 'it'+'s a draw';
     }
    
 }
