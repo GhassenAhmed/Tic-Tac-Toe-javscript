@@ -14,8 +14,10 @@ const winCombos=[
 const currentTurn=document.querySelector('.current-turn');
 const player1score=document.querySelector('.score1');
 const player2score=document.querySelector('.score2');
+const draw=document.querySelector('.draw');
 let usedCells=[];
-
+let winner=false;
+let ties=0;
 let player1={
     Symbol:'<i class="fa fa-close"></i>',
     played:[],
@@ -58,13 +60,19 @@ function addSymbole(player,i){
 
 
 function checkWin(player){
-    winCombos.some(combo=>{
-        if(combo.every(index => player.played.includes(index))){
-            alert("u won");
-            player.score++;
-            showScore();
-        }
-    })
+    if(!winner){
+        winCombos.some(combo=>{
+            if(combo.every(index => player.played.includes(index))){
+                alert("u won");
+                player.score++;
+                showScore();
+            }
+        })
+    }
+    if(!winner && usedCells.length==9){
+        ties++;
+        showScore();
+    }
 }
 
 function isEmpty(i){
@@ -98,4 +106,5 @@ function checkTurn(){
 function showScore(){
     player1score.innerHTML=player1.score;
     player2score.innerHTML=player2.score;
+    draw.innerHTML=ties;
 }
