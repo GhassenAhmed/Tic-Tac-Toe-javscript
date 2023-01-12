@@ -6,6 +6,8 @@ const currentTurn=document.querySelector('.current-turn');
 const player1score=document.querySelector('.score1');
 const player2score=document.querySelector('.score2');
 const draw=document.querySelector('.draw');
+const overlay=document.querySelector('.overlay');
+const close=document.querySelector('.close');
 const winCombos=[
     [0,1,2],
     [3,4,5],
@@ -69,7 +71,7 @@ function checkWin(player){
                 alert("u won");
                 player.score++;
                 showScore();
-                showMessage();
+                showMessage(player);
             }
         })
     }
@@ -114,8 +116,16 @@ function showScore(){
 }
 
 function showMessage(player){
-    if(winner){
-        content.innerHTML=player.Symbol +msg;
+    if(!winner){
+        overlay.style.display='flex';
+        content.innerHTML= player.Symbol +msg;
     }
    
 }
+
+function closeMsg(){
+    overlay.style.display='none';
+
+}
+close.addEventListener('click',closeMsg);
+close.addEventListener('click',reset);
