@@ -1,17 +1,27 @@
 const cells = document.querySelectorAll('.cell');
 
+
+
+
+
+let player1={
+    Symbol:'<i class="fa fa-close"></i>',
+    played:[],
+    score:0
+}
+
+let player2={
+    Symbol:'<i class="fa fa-circle-o"></i>',
+    played:[],
+    score:0
+}
+
 for(let i=0;i<9;i++){
     cells[i].addEventListener('click',()=>{
-        addSymbole(i);
+        addSymbole(player1,i);
     })
 }
 
-for(let i=0;i<9;i++){
-    cells[i].addEventListener('dblclick',()=>{
-        cells[i].innerHTML='O';
-    })
-}
-
-function addSymbole(i){
-    cells[i].innerHTML='<i class="fa fa-close"></i>';
+function addSymbole(player,i){
+    cells[i].innerHTML=player.Symbol;
 }
