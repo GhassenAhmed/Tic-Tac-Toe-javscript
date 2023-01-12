@@ -68,9 +68,11 @@ function checkWin(player){
     if(!winner){
         winCombos.some(combo=>{
             if(combo.every(index => player.played.includes(index))){
+                winner=true;
                 player.score++;
                 showScore();
-                showMessage(player);
+                showMessage(player,winner);
+                reset();
             }
         })
     }
@@ -93,6 +95,7 @@ function reset(){
     cells.forEach(cell=>{
         cell.innerHTML='';
     })
+    winner=false;
     usedCells=[];
     player1.played=[];
     player2.played=[];
