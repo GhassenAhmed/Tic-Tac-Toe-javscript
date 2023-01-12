@@ -32,6 +32,13 @@ body{
     border-radius: 20px;
     background: linear-gradient(#061423,#0d1f32);
 }
+.symbols i:nth-child(odd){
+    color:#febf14;
+}
+.reset{
+    cursor: pointer;
+}
+
 .stats{
     margin-top: 20px;
     
