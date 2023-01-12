@@ -1,6 +1,11 @@
 const cells = document.querySelectorAll('.cell');
-let turn=true;
-let btnreset=document.querySelector('.button');
+const btnreset=document.querySelector('.button');
+const content=document.querySelector('.content');
+const msg= ' is the</span> <h2>winner</h2>';
+const currentTurn=document.querySelector('.current-turn');
+const player1score=document.querySelector('.score1');
+const player2score=document.querySelector('.score2');
+const draw=document.querySelector('.draw');
 const winCombos=[
     [0,1,2],
     [3,4,5],
@@ -11,10 +16,8 @@ const winCombos=[
     [0,4,8],
     [2,4,6]
 ]
-const currentTurn=document.querySelector('.current-turn');
-const player1score=document.querySelector('.score1');
-const player2score=document.querySelector('.score2');
-const draw=document.querySelector('.draw');
+
+let turn=true;
 let usedCells=[];
 let winner=false;
 let ties=0;
@@ -66,6 +69,7 @@ function checkWin(player){
                 alert("u won");
                 player.score++;
                 showScore();
+                showMessage();
             }
         })
     }
@@ -107,4 +111,11 @@ function showScore(){
     player1score.innerHTML=player1.score;
     player2score.innerHTML=player2.score;
     draw.innerHTML=ties;
+}
+
+function showMessage(player){
+    if(winner){
+        content.innerHTML=player.Symbol +msg;
+    }
+   
 }
