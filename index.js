@@ -81,6 +81,8 @@ function reset(){
         cell.innerHTML='';
     })
     usedCells=[];
+    player1.played=[];
+    player2.played=[];
 }
 
 btnreset.addEventListener('click',reset);
