@@ -23,10 +23,35 @@ body{
  flex-direction: column;
 }
 .tools , .stats{
+    margin-top: 100px;
     width: 600px;
     height: 100px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     border-radius: 20px;
+    background: linear-gradient(#061423,#0d1f32);
+}
+.stats{
+    margin-top: 20px;
+    
+}
+
+.cells{
+    display: flex;
+
+}
+.cell{
+    width: 200px;
+    height: 200px;
+    background-color: #0d1f32;
+    margin: 10px;
+   border-radius: 20px;
+   box-shadow: 0 5px 0 rgba(0,0,0,0.5);
+   cursor: pointer;
+   color: #a7bfdc;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 6em;
 }
