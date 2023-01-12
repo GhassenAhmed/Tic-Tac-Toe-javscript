@@ -1,5 +1,5 @@
 const cells = document.querySelectorAll('.cell');
-
+let turn=true;
 
 
 
@@ -18,7 +18,14 @@ let player2={
 
 for(let i=0;i<9;i++){
     cells[i].addEventListener('click',()=>{
-        addSymbole(player1,i);
+        if(turn){
+            addSymbole(player1,i);
+            turn=false;
+        }else{
+            addSymbole(player2,i);
+            turn=true;
+        }
+        
     })
 }
 
